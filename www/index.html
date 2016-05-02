@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+    <title>Tab View Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
+
+    <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>  
+
+    <script src='cordova.js'></script>
+    <script>               
+        function onDeviceReady(){
+            intel.xdk.device.hideSplashScreen();   
+        }        
+        document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);        
+    </script>
+</head>
+
+<body>
+
+    <div id="splashscreen" class='ui-loader heavy'>
+        App Framework - Tab View
+        <br>
+        <br>
+        <span class='ui-icon ui-icon-loading spin'></span>
+        <h1>Starting app</h1>
+    </div>
+
+    <div class="view">
+        <header>
+            <h1>Title</h1>
+        </header>
+
+        <div class="pages">
+            
+            <div class="panel" data-title="Login" id="loginPanel">
+                <br>
+                <input type="text" id="tCustomerID" placeholder="Customer ID" style="width:300px;"><br>
+                <input type="text" id="tLoginID" placeholder="Login ID" style="width:300px;"><br>
+                <input type="text" id="tPassword" placeholder="Password" style="width:300px;" value="2112"><br><br>
+                <input type="button" onclick="LoginButtonClick();return false;" value="Login"><br>
+
+                <div id="LoginMessage"></div>
+            </div>
+
+            <!--Tab Pages-->
+            <div class="panel" data-title="Approvals" id="approvalTab">
+                Approvals Tab<br><br>
+                <ul class="list" id="Approvals"></ul>
+                
+                <div id="ApprovalDetailPanels"></div>
+            </div>
+
+            <div class="panel" data-title="Favorites" id="orderHistoryTab">
+                Order History Tab<br><br>
+                <ul class="list">
+                    <li><a href="#orderHistoryItem1">Order History 1</a></li>
+                    <li><a href="#orderHistoryItem2">Order History 2</a></li>
+                    <li><a href="#orderHistoryItem3">Order History 3</a></li>
+                </ul>
+
+                <div class="panel" title="Order History 1" id="orderHistoryItem1" data-footer="none">
+                    <p>Order History 1 Details</p>
+                </div>
+                <div class="panel" title="Order History 2" id="orderHistoryItem2" data-footer="none">
+                    <p>Order History 2 Details</p>
+                </div>
+                <div class="panel" title="Order History 3" id="orderHistoryItem3" data-footer="none">
+                    <p>Order History 3 Details</p>
+                </div>
+            </div>
+
+            <div class="panel" data-title="Messages" id="logOutTab">
+                Log Out Tab<br>
+            </div>
+
+        </div>
+
+        <div id="footerDiv">
+        <footer>
+            <a href="#approvalTab" class="icon paper" onclick="$.afui.clearHistory()">Approvals</a>
+            <a href="#orderHistoryTab" class="icon calendar" onclick="$.afui.clearHistory()">Order History</a>
+            <a href="#logOutTab" class="icon close" onclick="$.afui.clearHistory()">Log Out</a>
+        </footer>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
